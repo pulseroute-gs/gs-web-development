@@ -1,0 +1,113 @@
+/* ── Quiz ─────────────────────────────────────────────────── */
+
+/* Bloco de uma pergunta */
+.quiz-item {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* Contador "1 / 10" acima do enunciado */
+.quiz-contador {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.4rem;
+}
+
+/* Texto da pergunta */
+.quiz-enunciado {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+/* Aviso de "selecione uma alternativa" */
+.quiz-aviso {
+    font-size: 0.85rem;
+    color: #e05252;
+    margin-top: 0.5rem;
+}
+
+/* Lista de alternativas */
+.quiz-alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Esconde o radio nativo */
+.quiz-btn {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Label estilizado como botão neumórfico */
+.quiz-alternativas label {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    background: var(--bg-color);
+    box-shadow: 6px 6px 12px var(--neu-dark), -6px -6px 12px var(--neu-light);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.1s ease, background 0.2s ease;
+}
+
+.quiz-alternativas label:hover {
+    box-shadow: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light);
+    transform: translateY(-1px);
+}
+
+/* Alternativa selecionada */
+.quiz-btn:checked + label {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: inset 3px 3px 8px var(--primary-dark), inset -2px -2px 6px rgba(255,255,255,0.15);
+    transform: translateY(0);
+}
+
+/* Navegação (botão Próxima) */
+.quiz-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+/* Tela de resultado */
+.quiz-resultado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.icon-gif-resultado {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.quiz-resultado p {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.quiz-resultado strong {
+    color: var(--primary);
+    font-size: 1.5rem;
+}

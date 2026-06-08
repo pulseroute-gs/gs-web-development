@@ -37,7 +37,7 @@ const perguntas = [
             "Porque armazena os dados das rotas localmente no veículo sem precisar de internet",
             "Porque opera em frequências de rádio AM, sem necessidade de antena especial"
         ],
-        correta: 3
+        correta: 0
     },
     {
         enunciado: "Qual é o serviço de atendimento de emergências médicas citado como público-alvo principal do PulseRoute?",
@@ -100,3 +100,101 @@ const perguntas = [
         correta: 1
     }
 ];
+
+let indiceAtual = 0;
+let acertos = 0;
+const form = document.getElementById("quiz-form");
+const btnProxima = document.getElementById("proxima-pergunta");
+
+function renderizarPergunta() {
+    const p = perguntas[indiceAtual];
+    const isUltima = indiceAtual === perguntas.length - 1;
+
+    form.innerHTML = `
+        <div class="quiz-item" id="pergunta-${indiceAtual}">
+            <p class="quiz-enunciado">
+                <span class="quiz-contador">${indiceAtual + 1} / ${perguntas.length}</span>
+                ${p.enunciado}
+            </p>
+            <ul class="quiz-alternativas">
+                ${p.alternativas.map((alt, i) => `
+                <li>
+                    <input type="radio" name="quiz-resposta" id="quiz-alt-${i}"
+                           class="quiz-btn" value="${i}">
+                    <label for="quiz-alt-${i}">${alt}</label>
+                </li>`).join("")}
+            </ul>
+            <p class="quiz-aviso" id="quiz-aviso" hidden>Selecione uma alternativa para continuar.</p>
+        </div>
+        ${isUltima ? '<button type="submit" class="btn-green quiz-submit"><span>Ver Resultado</span></button>' : ""}
+    `;
+
+    btnProxima.hidden = isUltima;
+}
+    
+function avancar() {
+    const selecionado = form.querySelector('input[name="quiz-resposta"]:checked');
+
+    if (!selecionado) {
+        document.getElementById("quiz-aviso").hidden = false;
+        return;
+    }
+
+    if (Number(selecionado.value) === perguntas[indiceAtual].correta) {
+        acertos++;
+    }
+
+    indiceAtual++;
+    renderizarPergunta();
+}
+
+function exibirResultado(e) {
+    e.preventDefault();
+
+    const selecionado = form.querySelector('input[name="quiz-resposta"]:checked');
+
+    if (!selecionado) {
+        document.getElementById("quiz-aviso").hidden = false;
+        return;
+    }
+
+    if (Number(selecionado.value) === perguntas[indiceAtual].correta) {
+        acertos++;
+    }
+
+    const gifNome = acertos >= 7 ? "decisao-certa" : "decisao-errada";
+    const gifAlt  = acertos >= 7 ? "Parabéns, ótimo resultado!" : "Continue estudando!";
+
+    form.hidden = true;
+    btnProxima.hidden = true;
+
+    const divResultado = document.createElement("div");
+    divResultado.className = "quiz-resultado";
+    divResultado.id = "quiz-resultado";
+    divResultado.innerHTML = `
+        <img src="./assets/gifs/quiz/${gifNome}.gif"
+             alt="${gifAlt}" class="icon-gif-resultado">
+        <p>Você acertou <strong>${acertos}</strong> de ${perguntas.length}</p>
+        <button type="button" class="btn-white" id="quiz-refazer">Refazer o quiz</button>
+    `;
+
+    form.after(divResultado);
+
+    document.getElementById("quiz-refazer").addEventListener("click", reiniciar);
+}
+
+function reiniciar() {
+    indiceAtual = 0;
+    acertos = 0;
+
+    const divResultado = document.getElementById("quiz-resultado");
+    if (divResultado) divResultado.remove();
+
+    form.hidden = false;
+    renderizarPergunta();
+}
+
+btnProxima.addEventListener("click", avancar);
+form.addEventListener("submit", exibirResultado);
+
+renderizarPergunta();
