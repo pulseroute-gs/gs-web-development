@@ -1,3 +1,7 @@
+// Usei como base o video https://www.youtube.com/watch?v=KXvONdomGos
+// Fiz adaptações para o meu projeto PulseRoute 
+// E tentei fazer a logica da minha forma para não fazer igual ao video.
+
 const perguntas = [
     {
         enunciado: "O que é um 'corredor verde' no contexto de emergências urbanas?",
@@ -108,7 +112,6 @@ const btnProxima = document.getElementById("proxima-pergunta");
 
 function renderizarPergunta() {
     const p = perguntas[indiceAtual];
-    const isUltima = indiceAtual === perguntas.length - 1;
 
     form.innerHTML = `
         <div class="quiz-item" id="pergunta-${indiceAtual}">
@@ -126,13 +129,17 @@ function renderizarPergunta() {
             </ul>
             <p class="quiz-aviso" id="quiz-aviso" hidden>Selecione uma alternativa para continuar.</p>
         </div>
-        ${isUltima ? '<button type="submit" class="btn-green quiz-submit"><span>Ver Resultado</span></button>' : ""}
     `;
 
-    btnProxima.hidden = isUltima;
+    btnProxima.textContent = "Próxima Pergunta";
 }
-    
+
 function avancar() {
+    if (indiceAtual >= perguntas.length) {
+        exibirResultado();
+        return;
+    }
+
     const selecionado = form.querySelector('input[name="quiz-resposta"]:checked');
 
     if (!selecionado) {
@@ -145,22 +152,24 @@ function avancar() {
     }
 
     indiceAtual++;
-    renderizarPergunta();
+
+    if (indiceAtual === perguntas.length) {
+        form.innerHTML = `
+        <div class="quiz-concluido">
+            <div class="icon-gif-concluido">
+                <img src="./assets/gifs/quiz/dupla-verificacao.gif" alt="Animação do quiz" class="icon-gif">
+            </div>
+            <p>Todas as perguntas respondidas!</p>
+        </div>
+        `;
+        btnProxima.textContent = "Ver Resultado";
+    } else {
+        renderizarPergunta();
+    }
 }
 
-function exibirResultado(e) {
-    e.preventDefault();
-
-    const selecionado = form.querySelector('input[name="quiz-resposta"]:checked');
-
-    if (!selecionado) {
-        document.getElementById("quiz-aviso").hidden = false;
-        return;
-    }
-
-    if (Number(selecionado.value) === perguntas[indiceAtual].correta) {
-        acertos++;
-    }
+function exibirResultado() {
+    btnProxima.hidden = true;
 
     const gifNome = acertos >= 7 ? "decisao-certa" : "decisao-errada";
     const gifAlt  = acertos >= 7 ? "Parabéns, ótimo resultado!" : "Continue estudando!";
@@ -179,7 +188,6 @@ function exibirResultado(e) {
     `;
 
     form.after(divResultado);
-
     document.getElementById("quiz-refazer").addEventListener("click", reiniciar);
 }
 
@@ -191,10 +199,10 @@ function reiniciar() {
     if (divResultado) divResultado.remove();
 
     form.hidden = false;
+    btnProxima.hidden = false;
     renderizarPergunta();
 }
 
 btnProxima.addEventListener("click", avancar);
-form.addEventListener("submit", exibirResultado);
 
 renderizarPergunta();
