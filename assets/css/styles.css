@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     background: rgba(236, 240, 243, 0.82);
@@ -480,13 +480,21 @@ h2 {
         padding: 0 40px;
     }
 
+    .header nav a {
+        padding: 0 12px;
+    }
+
     #hero {
         padding: 0 40px 60px;
     }
 }
 
-/* --- Tablet (≤ 900px) --- */
-@media (max-width: 900px) {
+/* --- Tablet (≤ 990px) --- */
+@media (max-width: 990px) {
+    #icone-menu{
+        display: flex;
+    }
+
     .section {
         padding: 2rem 1.5rem;
     }
@@ -575,10 +583,6 @@ h2 {
 
 /* --- Mobile (≤ 600px) --- */
 @media (max-width: 600px) {
-    .header-inner {
-       justify-content: center; 
-    }
-    
     .section {
         padding: 1.25rem 1rem;
     }
@@ -647,7 +651,6 @@ h2 {
 
 /* --- Mobile pequeno (≤ 380px) --- */
 @media (max-width: 380px) {
-
     .img-left .container,
     .img-right .container {
         padding: 1.25rem;

@@ -29,7 +29,7 @@
 }
 
 aside {
-    display: flex;
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -72,10 +72,11 @@ aside.ativo {
     display: flex;
 }
 
-/* #overlay {
+#overlay {
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.65);
     backdrop-filter: blur(8px);
     z-index: 50;
-} */
+}
