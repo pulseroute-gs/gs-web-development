@@ -491,7 +491,7 @@ h2 {
 
 /* --- Tablet (≤ 990px) --- */
 @media (max-width: 990px) {
-    #icone-menu{
+    #btn-menu{
         display: flex;
     }
 
