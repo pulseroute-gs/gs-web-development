@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PulseRoute — Corredores Verdes Inteligentes para Emergências</title>
     <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/menu.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">  
     <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/quiz.css">
     <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 
 <body>
-
+   
     <header class="header">
         <div class="header-inner">
             <a href="#hero" class="header-logo">
@@ -26,6 +28,7 @@
                 <a href="#publico-alvo">Público</a>
                 <a href="#beneficios">Benefícios</a>
                 <a href="#aplicacao">Aplicação</a>
+                <a href="#quiz">Quiz</a>
                 
             </nav>
             <!-- Botões de seletor de tema -->
@@ -36,10 +39,32 @@
                 <option value="escuro">Tema escuro</option>
                 <option value="colorido">Tema colorido</option>
             </select>
-               
+         
+            <button id="btn-menu" aria-label="abrir menu lateral" aria-expanded="false" aria-controls="aside">
+                <i class="bx bx-menu" id="icone-menu"></i>
+            </button>   
         </div>
     </header>
 
+    <div id="overlay" aria-hidden="true"></div>
+    <aside id="menu-lateral">
+        <div class="aside-inner">
+            <a href="#hero" class="header-logo">
+                <img src="./assets/icons/logo-header-desk.svg" alt="Logo PulseRoute" id="logoHeader">
+            </a>
+            <button id="fechar-menu" aria-label="fechar menu lateral">
+                <i class="bx bx-x" id="fecha-menu"></i>
+            </button>
+        </div>
+        <a href="#problema">Problema</a>
+        <a href="#tecnologia">Tecnologia</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#publico-alvo">Público</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#aplicacao">Aplicação</a>
+        <a href="#quiz">Quiz</a>
+    </aside>
+        
     <main>
 
         <section id="hero" class="hero has-image img-right">
@@ -273,5 +298,6 @@
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/quiz.js"></script>
     <script src="./assets/js/theme.js"></script>
+    <script src="./assets/js/menu.js"></script>
 </body>
 </html>
