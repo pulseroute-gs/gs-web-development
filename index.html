@@ -29,19 +29,19 @@
                 <a href="#aplicacao">Aplicação</a>
                 <a href="#quiz">Quiz</a>
             </nav>
-            <button id="btn-menu">
+            <button id="btn-menu" aria-label="abrir menu lateral" aria-expanded="false" aria-controls="aside">
                 <i class="bx bx-menu" id="icone-menu"></i>
             </button>   
         </div>
     </header>
 
-    <div id="overlay"></div>
+    <div id="overlay" aria-hidden="true"></div>
     <aside id="menu-lateral">
         <div class="aside-inner">
             <a href="#hero" class="header-logo">
                 <img src="./assets/icons/logo-header-desk.svg" alt="Logo PulseRoute" id="logoHeader">
             </a>
-            <button id="fechar-menu">
+            <button id="fechar-menu" aria-label="fechar menu lateral">
                 <i class="bx bx-x" id="fecha-menu"></i>
             </button>
         </div>
