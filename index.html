@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./assets/css/quiz.css">
+    <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 
 <body>
@@ -25,7 +26,17 @@
                 <a href="#publico-alvo">Público</a>
                 <a href="#beneficios">Benefícios</a>
                 <a href="#aplicacao">Aplicação</a>
+                
             </nav>
+            <!-- Botões de seletor de tema -->
+            <!-- onchange é para trocar o fundo. Aqui o onchange vai chamar a função trocarFundo (js) -->
+
+            <select id="background-change"  onchange="trocarFundo(this.value)"> 
+                <option value="branco">Tema claro</option>
+                <option value="escuro">Tema escuro</option>
+                <option value="colorido">Tema colorido</option>
+            </select>
+               
         </div>
     </header>
 
@@ -261,5 +272,6 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/quiz.js"></script>
+    <script src="./assets/js/theme.js"></script>
 </body>
 </html>
