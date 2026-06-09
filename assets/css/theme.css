@@ -1,0 +1,14 @@
+.tema-1 {
+    --bg-color: #ECF0F3;  /* TEMA CLARO*/
+    --surface: #ECF0F3;
+}
+
+.tema-2 {
+    --bg-color: #A4B2BA;       /* TEMA ESCURO */
+    --surface: #A4B2BA;
+}
+
+.tema-3 {
+    --bg-color: #c2ece2;       /* Um tom refrescante e calmante de verde-água  - TEMA COLORIDO*/
+    --surface: #E2F4F5;
+}

@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/quiz.css">
+    <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 
 <body>
@@ -28,7 +29,17 @@
                 <a href="#beneficios">Benefícios</a>
                 <a href="#aplicacao">Aplicação</a>
                 <a href="#quiz">Quiz</a>
+                
             </nav>
+            <!-- Botões de seletor de tema -->
+            <!-- onchange é para trocar o fundo. Aqui o onchange vai chamar a função trocarFundo (js) -->
+
+            <select id="background-change"  onchange="trocarFundo(this.value)"> 
+                <option value="branco">Tema claro</option>
+                <option value="escuro">Tema escuro</option>
+                <option value="colorido">Tema colorido</option>
+            </select>
+         
             <button id="btn-menu" aria-label="abrir menu lateral" aria-expanded="false" aria-controls="aside">
                 <i class="bx bx-menu" id="icone-menu"></i>
             </button>   
@@ -286,6 +297,7 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/quiz.js"></script>
+    <script src="./assets/js/theme.js"></script>
     <script src="./assets/js/menu.js"></script>
 </body>
 </html>
